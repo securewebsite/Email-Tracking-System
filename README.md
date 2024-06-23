@@ -61,5 +61,14 @@ This is a simple email tracking system to track email opens, clicks, and bounces
 7. Access the dashboard:
     - Open `https://yourdomain.com/login.php` in your browser and log in to view the tracking data.
 
+8. Generate a Hashed Password for admin
+
+    - Use the following PHP code snippet to generate a hashed password for the admin:
+
+      <?php
+        echo password_hash('your_admin_password', PASSWORD_DEFAULT);
+     ?>
+
+   
 ## License
 This project is licensed under the MIT License.
