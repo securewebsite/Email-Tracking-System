@@ -11,6 +11,7 @@ This is a simple email tracking system to track email opens, clicks, and bounces
 ## Requirements
 - PHP 7.0 or higher
 - MySQL
+- Composer
 
 ## Setup
 
@@ -20,22 +21,31 @@ This is a simple email tracking system to track email opens, clicks, and bounces
     cd email-tracking
     ```
 
-2. Configure the database connection:
-    - Open `config.php` and update the database connection details:
-      ```php
-      $servername = "localhost";
-      $username = "your_db_username";
-      $password = "your_db_password";
-      $dbname = "email_tracking";
-      ```
+2. Install dependencies:
+    ```sh
+    composer install
+    ```
 
-3. Initialize the database:
+3. Configure the environment variables:
+    - Create a `.env` file and update the values:
+      ```
+      DB_HOST=localhost
+      DB_USER=your_db_username
+      DB_PASS=your_db_password
+      DB_NAME=email_tracking
+
+      ADMIN_USERNAME=admin
+      ADMIN_PASSWORD=your_hashed_password
+      ```
+    - Use `password_hash()` in PHP to generate a hashed password for `ADMIN_PASSWORD`.
+
+4. Initialize the database:
     - Run `init_db.php` to create the necessary table:
       ```sh
       php init_db.php
       ```
 
-4. Add tracking pixel and links to your emails:
+5. Add tracking pixel and links to your emails:
     - For tracking opens:
       ```html
       <img src="https://yourdomain.com/track.php?email=user@example.com&event=open" alt="" style="display:none;">
@@ -45,11 +55,11 @@ This is a simple email tracking system to track email opens, clicks, and bounces
       <a href="https://yourdomain.com/track.php?email=user@example.com&event=click&url=https://destination.com">Click Here</a>
       ```
 
-5. Set up bounce handling (optional):
+6. Set up bounce handling (optional):
     - Configure your email service provider to send bounce events to `https://yourdomain.com/bounce.php`.
 
-6. Access the dashboard:
-    - Open `https://yourdomain.com/dashboard.php` in your browser to view the tracking data.
+7. Access the dashboard:
+    - Open `https://yourdomain.com/login.php` in your browser and log in to view the tracking data.
 
 ## License
 This project is licensed under the MIT License.
