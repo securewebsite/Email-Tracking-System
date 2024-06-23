@@ -1,5 +1,11 @@
 <?php
 require 'config.php';
+require 'auth.php';
+
+if (!isAuthenticated()) {
+    header('Location: login.php');
+    exit();
+}
 
 $conn = getDbConnection();
 
@@ -69,6 +75,7 @@ $conn->close();
                 <?php endif; ?>
             </tbody>
         </table>
+        <a href="logout.php" class="btn btn-danger">Logout</a>
     </div>
 </body>
 </html>
