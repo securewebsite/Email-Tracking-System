@@ -65,10 +65,8 @@ This is a simple email tracking system to track email opens, clicks, and bounces
 
     - Use the following PHP code snippet to generate a hashed password for the admin:
 
-      '''php
-      ' <?php
         echo password_hash('your_admin_password', PASSWORD_DEFAULT);
-      ?> '
+      
 
    
 ## License
