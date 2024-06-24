@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
 
+// Debug logging
+file_put_contents('track.log', date('Y-m-d H:i:s') . " - track.php called with email: " . $_GET['email'] . ", event: " . $_GET['event'] . ", url: " . $_GET['url'] . PHP_EOL, FILE_APPEND);
+
 $conn = getDbConnection();
 
 $email = isset($_GET['email']) ? $_GET['email'] : '';
