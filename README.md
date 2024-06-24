@@ -36,6 +36,11 @@ This is a simple email tracking system to track email opens, clicks, and bounces
 
       ADMIN_USERNAME=admin
       ADMIN_PASSWORD=your_hashed_password
+
+      IMAP_HOST=imap.example.com
+      IMAP_PORT=993
+      IMAP_USER=your_email@example.com
+      IMAP_PASS=your_email_password
       ```
     - Use `password_hash()` in PHP to generate a hashed password for `ADMIN_PASSWORD`.
 
@@ -58,17 +63,22 @@ This is a simple email tracking system to track email opens, clicks, and bounces
 6. Set up bounce handling (optional):
     - Configure your email service provider to send bounce events to `https://yourdomain.com/bounce.php`.
 
-7. Access the dashboard:
+7. Schedule bounce email checks:
+    - Use a cron job to run `check_bounces.php` periodically:
+      ```sh
+      */5 * * * * /usr/bin/php /path/to/your/project/check_bounces.php
+      ```
+
+8. Access the dashboard:
     - Open `https://yourdomain.com/login.php` in your browser and log in to view the tracking data.
 
-8. Generate a Hashed Password for admin
+9. Generate a Hashed Password for admin
 
     - Use the following PHP code snippet to generate a hashed password for the admin:
        ```php
         echo password_hash('your_admin_password', PASSWORD_DEFAULT);
        ```
-      
-
    
+  
 ## License
 This project is licensed under the MIT License.
