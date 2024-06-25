@@ -8,7 +8,10 @@ $sql = "CREATE TABLE IF NOT EXISTS tracking_events (
     email VARCHAR(255) NOT NULL,
     event_type ENUM('open', 'click', 'bounce') NOT NULL,
     url TEXT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    subject VARCHAR(255) NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
+    user_agent TEXT
 )";
 
 if ($conn->query($sql) === TRUE) {
